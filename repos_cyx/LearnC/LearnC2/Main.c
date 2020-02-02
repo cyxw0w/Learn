@@ -186,7 +186,7 @@ int main() {
 	printf("\n");
 */
 
-	int num = 0;
+	/*int num = 0;
 	printf("반복횟수를 입력하세요 :");
 	scanf_s("%d", &num);
 	for (int i = 0; i < num; i++) {
@@ -194,8 +194,31 @@ int main() {
 			printf("*");
 		}
 		printf("\n");
-	}
+	}*/
+
+	/*int num = 0;
+	printf("반복횟수를 입력하세요 :");
+	scanf_s("%d", &num);
+	for (int i = 0; i < num; i++) {
+		for (int j = 0; j < i+1; j++) {
+			printf("*");
+		}
+		printf("\n");
+	}*/
 	
+	int stopNumber = 0, n;
+	printf("1~100중의 수중 출력을 멈출 수를 입력하세요 : ");
+	scanf_s("%d", &stopNumber);
+	for (n = 1; n < 100; n++) {
+		if (n % 2 == 1)
+			continue;
+		printf("n=%d\n", n);
+
+		if (n == stopNumber)
+			break;
+	}
+
+
 	//수업용 코드.
 	system("pause");
 	return 0;
