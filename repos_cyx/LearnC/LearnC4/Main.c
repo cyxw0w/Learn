@@ -22,6 +22,10 @@ int GetAvgFromSum(int* start, int* end, float* avg);
 
 void malValue(int** , int);
 
+int StringCompare(const char* str1, const char* str2);
+int GetStringCount(const char* str);
+void CountDown(int count);
+
 int main() {
 
 	srand(time(0));
@@ -97,20 +101,25 @@ int main() {
 	}*/
 
 	
-	int* ages = 0;
-	//함수로 동적 할당.
+	//int* ages = 0;
+	////함수로 동적 할당.
+	//
+	//int cnt = 0;
+	//cnt = GetIntegerFromInput("몇 명의 나이를 저장 하시겠습니까 : ");
+	//
+	//malValue(&ages, cnt);
+	//
+	//printf("ages address = %u\n", ages);
+	//
+	//if (ages != 0) {
+	//	free(ages);
+	//	ages = 0;
+	//}
 
-	int cnt = 0;
-	cnt = GetIntegerFromInput("몇 명의 나이를 저장 하시겠습니까 : ");
+	//int result = StringCompare("안녕하세요.", "안녕하세요.");
+	//printf("result = %d\n", result);
 
-	malValue(&ages, cnt);
-
-	printf("ages address = %u\n", ages);
-
-	if (ages != 0) {
-		free(ages);
-		ages = 0;
-	}
+	CountDown(3);
 
 	system("pause");
 	return 0;
@@ -212,4 +221,40 @@ int GetAvgFromSum(int* start, int* end, float* avg) {
 
 void malValue(int ** num, int n) {
 	*num = (int*)malloc(sizeof(int)* n);
+}
+
+int GetStringCount(const char* str) {
+	int i = 0, cnt = 0;
+	for (i = 0; str[i] != NULL; i++) {
+		cnt++;
+	}
+
+	return cnt;
+}
+
+// 두개의 문자열을 받아 반환값이 0이면 같은 문자, 0이 아니면 다른 문자.
+int StringCompare(const char* str1, const char* str2) {
+	int result = 0;
+	if (GetStringCount(str1) != GetStringCount(str2))
+		result = 1;
+	else {
+		int cnt = GetStringCount(str1), n;
+		for (n = 0; n < cnt; n++) {
+			if (str1[n] != str2[n]) {
+				result = 1;
+				break;
+			}
+		}
+	}
+
+	return result;
+}
+
+void CountDown(int count) {
+	if (count <= 0) {
+		printf("발사! \n");
+		return;
+	}
+	printf("발사 %d초 전!\n", count);
+	CountDown(count - 1);
 }
